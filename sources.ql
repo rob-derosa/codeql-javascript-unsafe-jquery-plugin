@@ -1,8 +1,9 @@
 import javascript
 
 predicate isSource(DataFlow::Node source) {
-    exists(<TODO: declare temporary variables> |
-      <TODO: clause that identifies your source as a jquery plugin option>
+    exists(DataFlow::FunctionNode plugin |
+      plugin = jquery().getAPropertyRead("fn").getAPropertySource() and
+      source = plugin.getLastParameter()
     )
 }
 
